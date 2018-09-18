@@ -5,28 +5,46 @@
     <data>
 
         <variable
-            name="item"
-            type="ssun.pe.kr.myapplication.Item" />
+            name="info"
+            type="android.content.pm.ApplicationInfo" />
 
         <variable
-            name="position"
-            type="int" />
+            name="name"
+            type="String" />
+
+        <variable
+            name="icon"
+            type="android.graphics.drawable.Drawable" />
     </data>
 
     <android.support.constraint.ConstraintLayout
-        android:layout_width="150dp"
+        android:layout_width="100dp"
         android:layout_height="match_parent"
-        android:background="@{item.color}">
+        android:padding="10dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{String.valueOf(position)}"
-            android:textColor="@android:color/white"
-            android:textSize="32sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <ImageView
+            android:id="@+id/ivIcon"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@{icon}"
+            app:layout_constraintBottom_toTopOf="@id/tvLabel"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:lines="2"
+            android:text="@{name}"
+            android:textColor="@android:color/black"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@id/ivIcon"
+            app:layout_constraintRight_toRightOf="@id/ivIcon"
+            app:layout_constraintTop_toBottomOf="@id/ivIcon" />
     </android.support.constraint.ConstraintLayout>
 </layout>

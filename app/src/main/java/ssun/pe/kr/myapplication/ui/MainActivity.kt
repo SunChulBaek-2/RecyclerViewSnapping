@@ -1,5 +1,6 @@
-package ssun.pe.kr.myapplication
+package ssun.pe.kr.myapplication.ui
 
+import android.content.pm.ApplicationInfo
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
@@ -11,6 +12,9 @@ import com.github.rubensousa.gravitysnaphelper.GravitySnapHelper
 
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
+import ssun.pe.kr.myapplication.data.model.Item
+import ssun.pe.kr.myapplication.R
+import ssun.pe.kr.myapplication.data.AppRepository
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,14 +40,18 @@ class MainActivity : AppCompatActivity() {
         rv2.adapter = adapter2
         rv2.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         LinearSnapHelper().attachToRecyclerView(rv2)
-        adapter2.submitList(makeItemList())
+        adapter2.submitList(makeAppList())
 
         // RecyclerViewSnap
         adapter3 = MainAdapter2()
         rv3.adapter = adapter3
         rv3.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         GravitySnapHelper(Gravity.START).attachToRecyclerView(rv3)
-        adapter3.submitList(makeItemList())
+        adapter3.submitList(makeAppList())
+    }
+
+    private fun makeAppList(): List<ApplicationInfo> {
+        return AppRepository.getInstalledApps()
     }
 
     private fun makeItemList() = listOf(

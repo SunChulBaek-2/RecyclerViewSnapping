@@ -6,7 +6,7 @@
 
         <variable
             name="item"
-            type="ssun.pe.kr.myapplication.Item" />
+            type="ssun.pe.kr.myapplication.data.model.Item" />
 
         <variable
             name="position"

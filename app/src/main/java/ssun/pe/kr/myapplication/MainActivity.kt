@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.LinearSnapHelper
 import android.support.v7.widget.PagerSnapHelper
 import android.view.Gravity
 import com.github.rubensousa.gravitysnaphelper.GravitySnapHelper
@@ -15,6 +16,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var adapter1: MainAdapter
     private lateinit var adapter2: MainAdapter2
+    private lateinit var adapter3: MainAdapter2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,12 +31,19 @@ class MainActivity : AppCompatActivity() {
         adapter1.submitList(makeItemList())
         indicator1.attachToRecyclerView(rv1)
 
-        // RecyclerViewSnap
+        // LinearSnapHelper
         adapter2 = MainAdapter2()
         rv2.adapter = adapter2
         rv2.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        GravitySnapHelper(Gravity.START).attachToRecyclerView(rv2)
+        LinearSnapHelper().attachToRecyclerView(rv2)
         adapter2.submitList(makeItemList())
+
+        // RecyclerViewSnap
+        adapter3 = MainAdapter2()
+        rv3.adapter = adapter3
+        rv3.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        GravitySnapHelper(Gravity.START).attachToRecyclerView(rv3)
+        adapter3.submitList(makeItemList())
     }
 
     private fun makeItemList() = listOf(

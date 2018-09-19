@@ -4,6 +4,8 @@ import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.content.pm.ApplicationInfo
+import kotlinx.coroutines.experimental.android.UI
+import kotlinx.coroutines.experimental.launch
 import ssun.pe.kr.myapplication.data.AppRepository
 import ssun.pe.kr.myapplication.data.model.Item
 import javax.inject.Inject
@@ -19,11 +21,11 @@ class MainViewModel @Inject constructor(
     val installedApps: LiveData<List<ApplicationInfo>>
         get() = _installedApps
 
-    fun getItems() {
-        _items.value = repo.getItems()
+    fun getItems() = launch(UI) {
+        _items.value = repo.getItems().await()
     }
 
-    fun getInstalledApps() {
-        _installedApps.value = repo.getInstalledApps()
+    fun getInstalledApps() = launch(UI) {
+        _installedApps.value = repo.getInstalledApps().await()
     }
 }

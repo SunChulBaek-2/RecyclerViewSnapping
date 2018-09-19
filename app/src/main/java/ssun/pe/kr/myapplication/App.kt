@@ -1,18 +1,12 @@
 package ssun.pe.kr.myapplication
 
-import android.app.Application
-import android.content.Context
+import dagger.android.AndroidInjector
+import dagger.android.DaggerApplication
+import ssun.pe.kr.myapplication.di.DaggerAppComponent
 
-class App : Application() {
+class App : DaggerApplication() {
 
-    companion object {
-        private lateinit var instance: App
-
-        val context: Context
-            get() = instance.applicationContext
-    }
-
-    init {
-        instance = this
+    override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
+        return DaggerAppComponent.builder().create(this)
     }
 }

@@ -5,8 +5,10 @@ import android.content.pm.PackageManager
 import dagger.Module
 import dagger.Provides
 import ssun.pe.kr.myapplication.App
+import ssun.pe.kr.myapplication.data.AppDataSource
 import ssun.pe.kr.myapplication.data.AppLocalDataSource
 import ssun.pe.kr.myapplication.data.AppRepository
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -24,9 +26,10 @@ class AppModule {
 
     @Singleton
     @Provides
+    @Named("repository")
     fun provideRepository(
             localDataSource: AppLocalDataSource
-    ): AppRepository {
+    ): AppDataSource {
         return AppRepository(localDataSource)
     }
 }

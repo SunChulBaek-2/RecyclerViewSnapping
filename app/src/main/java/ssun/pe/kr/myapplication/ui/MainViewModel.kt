@@ -6,12 +6,13 @@ import android.arch.lifecycle.ViewModel
 import android.content.pm.ApplicationInfo
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.launch
-import ssun.pe.kr.myapplication.data.AppRepository
+import ssun.pe.kr.myapplication.data.AppDataSource
 import ssun.pe.kr.myapplication.data.model.Item
 import javax.inject.Inject
+import javax.inject.Named
 
 class MainViewModel @Inject constructor(
-        private val repo: AppRepository
+        @Named("repository") private val repository: AppDataSource
 ): ViewModel() {
     private val _items = MutableLiveData<List<Item>>()
     val items: LiveData<List<Item>>
@@ -22,10 +23,10 @@ class MainViewModel @Inject constructor(
         get() = _installedApps
 
     fun getItems() = launch(UI) {
-        _items.value = repo.getItems().await()
+        _items.value = repository.getItems().await()
     }
 
     fun getInstalledApps() = launch(UI) {
-        _installedApps.value = repo.getInstalledApps().await()
+        _installedApps.value = repository.getInstalledApps().await()
     }
 }

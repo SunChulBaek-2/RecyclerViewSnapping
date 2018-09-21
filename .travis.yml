@@ -26,10 +26,10 @@ android:
     - extra-android-support
     - extra-android-m2repository
 
-notifications:
+ notifications:
   slack:
-    on_success: always
-    on_failure: always
+    rooms:
+      - x1210x-ci:v9tmLwifJnAAwHV3CCw1WTL6#snapping
 
 before_install:
   - chmod +x gradlew

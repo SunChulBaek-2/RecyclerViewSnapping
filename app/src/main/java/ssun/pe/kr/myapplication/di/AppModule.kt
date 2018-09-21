@@ -6,9 +6,8 @@ import dagger.Module
 import dagger.Provides
 import ssun.pe.kr.myapplication.App
 import ssun.pe.kr.myapplication.data.AppDataSource
-import ssun.pe.kr.myapplication.data.AppLocalDataSource
-import ssun.pe.kr.myapplication.data.AppRepository
-import javax.inject.Named
+import ssun.pe.kr.myapplication.data.LocalAppDataSource
+import ssun.pe.kr.myapplication.data.AppDataRepository
 import javax.inject.Singleton
 
 @Module
@@ -26,10 +25,18 @@ class AppModule {
 
     @Singleton
     @Provides
-    @Named("repository")
-    fun provideRepository(
-            localDataSource: AppLocalDataSource
+    fun provideAppLocalDataSource(
+            context: Context,
+            pm: PackageManager
     ): AppDataSource {
-        return AppRepository(localDataSource)
+        return LocalAppDataSource(context, pm)
+    }
+
+    @Singleton
+    @Provides
+    fun provideRepository(
+            localDataSource: AppDataSource
+    ): AppDataRepository {
+        return AppDataRepository(localDataSource)
     }
 }

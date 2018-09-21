@@ -12,7 +12,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class AppLocalDataSource @Inject constructor(
+class LocalAppDataSource @Inject constructor(
         private val context: Context,
         private val pm: PackageManager
 ) : AppDataSource {

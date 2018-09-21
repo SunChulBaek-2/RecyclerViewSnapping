@@ -6,13 +6,12 @@ import android.arch.lifecycle.ViewModel
 import android.content.pm.ApplicationInfo
 import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.launch
-import ssun.pe.kr.myapplication.data.AppDataSource
+import ssun.pe.kr.myapplication.data.AppDataRepository
 import ssun.pe.kr.myapplication.data.model.Item
 import javax.inject.Inject
-import javax.inject.Named
 
 class MainViewModel @Inject constructor(
-        @Named("repository") private val repository: AppDataSource
+        private val repository: AppDataRepository
 ): ViewModel() {
     private val _items = MutableLiveData<List<Item>>()
     val items: LiveData<List<Item>>

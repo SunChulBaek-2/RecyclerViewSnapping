@@ -27,9 +27,7 @@ android:
     - extra-android-m2repository
 
 notifications:
-  slack:
-    rooms:
-      - x1210x-ci:v9tmLwifJnAAwHV3CCw1WTL6#snapping
+  slack: x1210x-ci:v9tmLwifJnAAwHV3CCw1WTL6
 
 before_install:
   - chmod +x gradlew

@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import ssun.pe.kr.myapplication.R
 import ssun.pe.kr.myapplication.databinding.ActivityMainBinding
+import timber.log.Timber
 import javax.inject.Inject
 
 class MainActivity : DaggerAppCompatActivity() {
@@ -27,6 +28,9 @@ class MainActivity : DaggerAppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        Timber.d("[x1210x] onCreate()")
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.viewModel = viewModel
 
@@ -43,6 +47,12 @@ class MainActivity : DaggerAppCompatActivity() {
 
         viewModel.getItems()
         viewModel.getInstalledApps()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        Timber.d("[x1210x] onDestroy()")
     }
 
     private fun initViews() {

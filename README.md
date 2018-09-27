@@ -8,3 +8,4 @@ RecyclerView 스냅핑 예제
   * [Coroutines](https://kotlinlang.org/docs/reference/coroutines.html)
   * [Dagger 2](https://github.com/google/dagger)
   * [ScrollingPagerIndicator](https://github.com/TinkoffCreditSystems/ScrollingPagerIndicator)
+  * [Timber](https://github.com/JakeWharton/timber)

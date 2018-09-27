@@ -8,6 +8,7 @@ import kotlinx.coroutines.experimental.android.UI
 import kotlinx.coroutines.experimental.launch
 import ssun.pe.kr.myapplication.data.AppDataRepository
 import ssun.pe.kr.myapplication.data.model.Item
+import timber.log.Timber
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(
@@ -20,6 +21,12 @@ class MainViewModel @Inject constructor(
     private val _installedApps = MutableLiveData<List<ApplicationInfo>>()
     val installedApps: LiveData<List<ApplicationInfo>>
         get() = _installedApps
+
+    override fun onCleared() {
+        super.onCleared()
+
+        Timber.d("[x1210x] onCleared()")
+    }
 
     fun getItems() = launch(UI) {
         _items.value = repository.getItems().await()

@@ -3,7 +3,7 @@ package ssun.pe.kr.myapplication.data
 import android.content.Context
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
-import android.support.v4.content.ContextCompat
+import androidx.core.content.ContextCompat
 import kotlinx.coroutines.experimental.Deferred
 import kotlinx.coroutines.experimental.async
 import ssun.pe.kr.myapplication.R

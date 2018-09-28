@@ -33,4 +33,4 @@ before_install:
   - chmod +x gradlew
 
 script:
-  - ./gradlew clean assembleDebug
+  - ./gradlew clean dependencyUpdates -Drevision=release assembleDebug

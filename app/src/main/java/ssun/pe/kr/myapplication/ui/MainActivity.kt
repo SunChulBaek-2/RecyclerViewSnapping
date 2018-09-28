@@ -1,6 +1,7 @@
 package ssun.pe.kr.myapplication.ui
 
 import android.arch.lifecycle.Observer
+import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -19,7 +20,9 @@ import javax.inject.Inject
 
 class MainActivity : DaggerAppCompatActivity() {
 
-    @Inject lateinit var viewModel: MainViewModel
+    @Inject lateinit var viewModelFactory: MainViewModelFactory
+
+    private lateinit var viewModel: MainViewModel
     private lateinit var binding: ActivityMainBinding
 
     private lateinit var adapter1: MainAdapter
@@ -30,6 +33,8 @@ class MainActivity : DaggerAppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         Timber.d("[x1210x] onCreate()")
+
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(MainViewModel::class.java)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.viewModel = viewModel

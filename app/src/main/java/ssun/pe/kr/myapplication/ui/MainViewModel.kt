@@ -31,7 +31,6 @@ class MainViewModel @Inject constructor(
     val installedApps: LiveData<List<ApplicationInfo>>
         get() = _installedApps
 
-    // TODO : 호출되지 않음
     override fun onCleared() {
         super.onCleared()
 
